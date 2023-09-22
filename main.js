@@ -1,4 +1,5 @@
 function calculatetax() {
+
     var MoneyInput1 = document.getElementById("MoneyInput");
     var TaxInput1 = document.getElementById("TaxInput");
 
@@ -7,7 +8,13 @@ function calculatetax() {
 
     var percentage = firstNumber - (secondNumber / 100) * firstNumber;
     var result = document.getElementById("result");
-    result.value = percentage.toFixed(2)
+    if (isNaN(percentage)){
+        alert("Enter valid numbers")
+    }
+    else {
+        result.value = percentage.toFixed(2)
+    }
+    
     
 
  }
