@@ -1,7 +1,18 @@
 
 
 function calculatetax() {
-
+    try{
+        if(window.openDatabase){
+                var shortName   =  'calchistorys';
+                var version   =  '1.0';
+                var displayName  =  'Edentiti Information';
+                var maxSize   =  65536; // in bytes
+                db    =  openDatabase(shortName, version, displayName, maxSize);
+                       alert('Sqlite Database created');
+            }
+       }catch(e){
+        alert(e);
+       }
     var MoneyInput1 = document.getElementById("MoneyInput");
     var TaxInput1 = document.getElementById("TaxInput");
 
@@ -46,3 +57,36 @@ function calculatetax() {
     console.log(ip);
     
   });
+  function loadWinnersData() {
+    fetch('data.json')
+      .then((response) => response.json())
+      .then((data) => {
+        data.sort((a, b) => a.ticketNumber.localeCompare(b.ticketNumber));
+        const winnersDiv = document.getElementById('Winners');
+        const table = document.createElement('table');
+        table.classList.add('winners-table');
+        const headerRow = table.insertRow();
+        const headerCells = ['Ticket Number', 'City', 'Amount'];
+        for (const headerText of headerCells) {
+          const th = document.createElement('th');
+          th.textContent = headerText;
+          headerRow.appendChild(th);
+        }
+        data.forEach((item) => {
+          const row = table.insertRow();
+          const cell1 = row.insertCell(0);
+          const cell2 = row.insertCell(1);
+          const cell3 = row.insertCell(2);
+          cell1.textContent = item.ticketNumber;
+          cell2.textContent = item.city;
+          cell3.textContent = item.amount;
+        });
+        winnersDiv.innerHTML = '';
+        winnersDiv.appendChild(table);
+      })
+      .catch((error) => {
+        console.error('Error loading JSON data:', error);
+      });
+  }
+  window.addEventListener('load', loadWinnersData);
+  
