@@ -1,3 +1,5 @@
+
+
 function calculatetax() {
 
     var MoneyInput1 = document.getElementById("MoneyInput");
@@ -19,3 +21,28 @@ function calculatetax() {
     
 
  }
+ function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+  
+  
+  function text(url) {
+    return fetch(url).then(res => res.text());
+  }
+  
+  text('https://www.cloudflare.com/cdn-cgi/trace').then(data => {
+    let ipRegex = /[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}/
+    let ip = data.match(ipRegex)[0];
+    console.log(ip);
+    
+  });

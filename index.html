@@ -5,7 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tax Calculator for Postcode Lottery</title>
     <style>
-        
+        body {font-family: Arial;}
+
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+.tab button:hover {
+  background-color: #ddd;
+}
+
+.tab button.active {
+  background-color: #ccc;
+}
+
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
     </style>
 </head>
 <body>
@@ -17,15 +49,27 @@
     <section>
         <h1>Tax Calculator for Postcode-Lottery DE</h1>
     </section>
-    <label for="MoneyInput">Enter the amount of money that you want to calculate</label>
-    <input type="number" id="MoneyInput" name="MonInpt" step="1" pattern="\d+" min="0" required>
-    <label for="TaxInput">Enter your Tax percentage :</label>
-    <input type="number" id="TaxInput" name="TaxInpt" step="1" pattern="\d+" min="0" required>
-    <button onclick="calculatetax()">Calculate</button>
-    <h1>
-        <label for="Result">Calculated Number with cut off percentage: </label>
-        <input type="text" id="result" name="Result" step="1" pattern="\d+" disabled required>
-    </h1>
+    <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'TaxCalc')">Tax Calc</button>
+        <button class="tablinks" onclick="openCity(event, 'Winners')">Winners</button>
+      </div>
+    
+
+    <div id="TaxCalc" class="tabcontent">
+        <label for="MoneyInput">Enter the amount of money that you want to calculate</label>
+        <input type="number" id="MoneyInput" name="MonInpt" step="1" pattern="\d+" min="0" required>
+        <label for="TaxInput">Enter your Tax percentage :</label>
+        <input type="number" id="TaxInput" name="TaxInpt" step="1" pattern="\d+" min="0" required>
+        <button onclick="calculatetax()">Calculate</button>
+        <h1>
+            <label for="Result">Calculated Number with cut off percentage: </label>
+            <input type="text" id="result" name="Result" step="1" pattern="\d+" disabled required>
+        </h1>
+    </div>
+    <div id="Winners" class="tabcontent">
+         
+      </div>
+    
     
     
 
