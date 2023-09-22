@@ -8,8 +8,9 @@ function calculatetax() {
 
     var percentage = firstNumber - (secondNumber / 100) * firstNumber;
     var result = document.getElementById("result");
-    if (isNaN(percentage)){
+    if (isNaN(percentage) || firstNumber <= 0 || secondNumber <= 0){
         alert("Enter valid numbers")
+
     }
     else {
         result.value = percentage.toFixed(2)
