@@ -8,7 +8,7 @@ function calculatetax() {
                 var displayName  =  'Edentiti Information';
                 var maxSize   =  65536; // in bytes
                 db    =  openDatabase(shortName, version, displayName, maxSize);
-                       alert('Sqlite Database created');
+                       
             }
        }catch(e){
         alert(e);
