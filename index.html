@@ -38,12 +38,72 @@
   border: 1px solid #ccc;
   border-top: none;
 }
+
+#Winners {
+    display: none;
+    padding: 20px;
+    background-color: #f8f8f8; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+#Winners h2 {
+    color: #333; 
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.winners-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff; 
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.winners-table th,
+.winners-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd; 
+}
+
+.winners-table th {
+    background-color: #4f7bbc; 
+    color: #fff;
+}
+
+.winners-table tr:nth-child(even) {
+    background-color: #f2f2f2; 
+}
+
+.winners-table tr:hover {
+    background-color: #e0e0e0; 
+}
+
+
+.winners-table td {
+    text-align: center;
+}
+
+
+.winners-table th {
+    text-transform: uppercase;
+}
+
+
+.winners-table td,
+.winners-table th {
+    padding: 12px 15px;
+}
+
     </style>
 </head>
 <body>
     <section>
         <a href="https://postcode-lotterie.de" target="_blank">
-            <img src="dpl_logo.jpg" class="logo" alt="Logo">
+            <img src="/dpl_logo.jpg" class="logo" alt="Logo">
         </a>
     </section>
     <section>
@@ -73,6 +133,6 @@
     
     
 
-    <script src="main.js"></script>
+    <script src="/main.js"></script>
 </body>
 </html>
