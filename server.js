@@ -4,7 +4,10 @@ const app = express();
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(__dirname, '/index.html'));
+});
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '/icon.ico'));
 });
 app.get('/main.js', (req, res) => {
   res.sendFile(path.join(__dirname, '/main.js'));
@@ -12,11 +15,8 @@ app.get('/main.js', (req, res) => {
 app.get('/dpl_logo.jpg', (req, res) => {
   res.sendFile(path.join(__dirname, '/dpl_logo.jpg'));
 });
-
-
-
 app.get('/winningData', (req, res) => {
-  res.sendFile(path.join(__dirname, '/data.json')); // Provide the correct path to your JSON file here
+  res.sendFile(path.join(__dirname, '/data.json')); 
 });
 
 const PORT = process.env.PORT || 3000;

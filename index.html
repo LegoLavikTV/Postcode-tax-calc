@@ -1,10 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" href="icon.ico" type="image/x-icon">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tax Calculator for Postcode Lottery</title>
     <style>
+        body {
+            font-family: Arial;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            display: block;
+            margin: 0 auto;
+            max-width: 150px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #4f7bbc;
+            color: #000000;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #375a94;
+        }
+
+        #result {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
         body {font-family: Arial;}
 
 .tab {
@@ -39,6 +101,7 @@
   border-top: none;
 }
 
+
 #Winners {
     display: none;
     padding: 20px;
@@ -58,7 +121,7 @@
     border-collapse: collapse;
     background-color: #fff; 
     border-radius: 5px;
-    overflow: hidden;
+    overflow: hidden; 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -71,7 +134,7 @@
 
 .winners-table th {
     background-color: #4f7bbc; 
-    color: #fff;
+    color: #fff; 
 }
 
 .winners-table tr:nth-child(even) {
@@ -79,7 +142,7 @@
 }
 
 .winners-table tr:hover {
-    background-color: #e0e0e0; 
+    background-color: #e0e0e0;
 }
 
 
@@ -98,6 +161,7 @@
     padding: 12px 15px;
 }
 
+
     </style>
 </head>
 <body>
@@ -106,9 +170,6 @@
             <img src="/dpl_logo.jpg" class="logo" alt="Logo">
         </a>
     </section>
-    <section>
-        <h1>Tax Calculator and Winners for Postcode-Lottery DE</h1>
-    </section>
     <div class="tab">
         <button class="tablinks" onclick="openCity(event, 'TaxCalc')">Tax Calc</button>
         <button class="tablinks" onclick="openCity(event, 'Winners')">Winners</button>
@@ -116,13 +177,14 @@
     
 
       <div id="TaxCalc" class="tabcontent">
+        <h1>Tax Calculator for Postcode Lottery</h1>
         <label for="MoneyInput">Enter the amount of money that you want to calculate</label>
         <input type="number" id="MoneyInput" name="MonInpt" step="1" pattern="\d+" min="0" required>
         <label for="TaxInput">Enter your Tax percentage :</label>
         <input type="number" id="TaxInput" name="TaxInpt" step="1" pattern="\d+" min="0" required>
         <button onclick="calculatetax()">Calculate</button>
         <h1>
-            <label for="Result">Calculated Number with cut off percentage: </label>
+            <label for="Result">Calculated Number with cut-off percentage: </label>
             <input type="text" id="result" name="Result" step="1" pattern="\d+" disabled required>
         </h1>
     </div>
