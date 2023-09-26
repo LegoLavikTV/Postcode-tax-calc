@@ -27,7 +27,49 @@ function calculatetax() {
     }
     else {
         result.value = percentage.toFixed(2)
+        var previousCalculations = JSON.parse(localStorage.getItem("calculations")) || [];
+        previousCalculations.push({ money: firstNumber, tax: secondNumber, result: percentage.toFixed(2) });
+        localStorage.setItem("calculations", JSON.stringify(previousCalculations));
+
+        
+        updateCalculationsTable(previousCalculations);
+    
     }
+    function updateCalculationsTable(previousCalculations) {
+        var table = document.getElementById("previousCalculationsTable");
+        table.innerHTML = ''; 
+    
+        
+        var thead = document.createElement("thead");
+        var headerRow = document.createElement("tr");
+        var headerCells = ["Money", "Tax", "Result"];
+        headerCells.forEach(function (headerText) {
+            var th = document.createElement("th");
+            th.textContent = headerText;
+            headerRow.appendChild(th);
+        });
+        thead.appendChild(headerRow);
+        table.appendChild(thead);
+    
+        
+        var tbody = document.createElement("tbody");
+        for (var i = previousCalculations.length - 1; i >= 0; i--) {
+            var calculation = previousCalculations[i];
+            var row = document.createElement("tr");
+            var cell1 = document.createElement("td");
+            var cell2 = document.createElement("td");
+            var cell3 = document.createElement("td");
+            cell1.textContent = calculation.money;
+            cell2.textContent = calculation.tax;
+            cell3.textContent = calculation.result;
+            row.appendChild(cell1);
+            row.appendChild(cell2);
+            row.appendChild(cell3);
+            tbody.appendChild(row);
+        }
+        table.appendChild(tbody);
+    }
+    
     
     
 
@@ -57,63 +99,57 @@ function calculatetax() {
     console.log(ip);
     
   });
-  // Assuming your JSON data is structured like this:
-// [
-//   { "ticketNumber": "12345", "city": "New York", "amount": "$1000" },
-//   { "ticketNumber": "67890", "city": "Los Angeles", "amount": "$1500" },
-//   ...
-// ]
+
 
 function loadWinnersData() {
-    fetch('/winningData') // Assuming this URL corresponds to your data.json file
-      .then((response) => response.json())
-      .then((data) => {
-        const winnersDiv = document.getElementById('Winners');
-        const table = document.createElement('table');
-        table.classList.add('winners-table');
-  
-        // Create table header
-        const thead = document.createElement('thead');
-        const headerRow = document.createElement('tr');
-        const headerCells = ['Ticket Number', 'City', 'Amount'];
-  
-        headerCells.forEach((headerText) => {
-          const th = document.createElement('th');
-          th.textContent = headerText;
-          headerRow.appendChild(th);
-        });
-  
-        thead.appendChild(headerRow);
-        table.appendChild(thead);
-  
-        // Create table body with data rows
-        const tbody = document.createElement('tbody');
-  
-        data.forEach((item) => {
-          const row = document.createElement('tr');
-          const cell1 = document.createElement('td');
-          const cell2 = document.createElement('td');
-          const cell3 = document.createElement('td');
-  
-          cell1.textContent = item.ticketNumber;
-          cell2.textContent = item.city;
-          cell3.textContent = item.amount;
-  
-          row.appendChild(cell1);
-          row.appendChild(cell2);
-          row.appendChild(cell3);
-  
-          tbody.appendChild(row);
-        });
-  
-        table.appendChild(tbody);
-        winnersDiv.innerHTML = '';
-        winnersDiv.appendChild(table);
-      })
-      .catch((error) => {
-        console.error('Error loading JSON data:', error);
+  fetch('/winningData') 
+    .then((response) => response.json())
+    .then((data) => {
+      const winnersDiv = document.getElementById('Winners');
+      const table = document.createElement('table');
+      table.classList.add('winners-table');
+
+      
+      const thead = document.createElement('thead');
+      const headerRow = document.createElement('tr');
+      const headerCells = ['Ticket Number', 'City', 'Amount'];
+
+      headerCells.forEach((headerText) => {
+        const th = document.createElement('th');
+        th.textContent = headerText;
+        headerRow.appendChild(th);
       });
-  }
-  
-  window.addEventListener('load', loadWinnersData);
-  
+
+      thead.appendChild(headerRow);
+      table.appendChild(thead);
+
+      
+      const tbody = document.createElement('tbody');
+
+      data.forEach((item) => {
+        const row = document.createElement('tr');
+        const cell1 = document.createElement('td');
+        const cell2 = document.createElement('td');
+        const cell3 = document.createElement('td');
+
+        cell1.textContent = item.ticketNumber;
+        cell2.textContent = item.city;
+        cell3.textContent = item.amount;
+
+        row.appendChild(cell1);
+        row.appendChild(cell2);
+        row.appendChild(cell3);
+
+        tbody.appendChild(row);
+      });
+
+      table.appendChild(tbody);
+      winnersDiv.innerHTML = '';
+      winnersDiv.appendChild(table);
+    })
+    .catch((error) => {
+      console.error('Error loading JSON data:', error);
+    });
+}
+
+window.addEventListener('load', loadWinnersData);
