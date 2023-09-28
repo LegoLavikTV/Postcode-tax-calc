@@ -212,14 +212,16 @@ function addWinner() {
 
         loadWinnersData();
         closeAddWinnerPopup();
+        document.getElementById("appwinnererror").style.display = "none";
     } else {
-        alert("Please enter valid information for the winner.");
+        document.getElementById("addwinnererror").style.display = "block";
     }
 }
 
 function openAddWinnerPopup() {
     var popup = document.getElementById("addWinnerPopup");
     popup.style.display = "block";
+    document.getElementById("addwinnererror").style.display = "none";
 }
 
 function closeAddWinnerPopup() {
