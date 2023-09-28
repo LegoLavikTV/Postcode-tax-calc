@@ -1,1 +1,7 @@
-[{   "ticketNumber": "777",   "city": "Berlin",   "amount": "8943"  }, {   "ticketNumber": "406",   "city": "Dusseldorf",   "amount": "112"  }, {    "ticketNumber": "112",   "city": "Hamburg",   "amount": "4999"  } ,{   "ticketNumber": "001",   "city": "Cologne",   "amount": "3465"  } ,{    "ticketNumber": "865",    "city": "Magdeburg",    "amount": "1589"}]
+[
+{   "ticketNumber": "777",   "city": "Berlin",   "amount": "8943"  }, 
+{   "ticketNumber": "406",   "city": "Dusseldorf",   "amount": "112"  }, 
+{    "ticketNumber": "112",   "city": "Hamburg",   "amount": "4999"  } ,
+{   "ticketNumber": "001",   "city": "Cologne",   "amount": "3465"  } ,
+{    "ticketNumber": "865",    "city": "Magdeburg",    "amount": "1589"}
+]

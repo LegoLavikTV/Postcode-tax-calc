@@ -6,6 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tax Calculator for Postcode Lottery</title>
     <style>
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .popup-content {
+            background-color: #fff;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 50px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            width: 400px;
+        }
+        
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        
         body {
             font-family: Arial;
             background-color: #f5f5f5;
@@ -160,24 +193,83 @@
         .winners-table th {
             padding: 12px 15px;
         }
+        .center {
+            text-align: center;
+        }
+        .left {
+            text-align: left;
+        }
+        .right {
+            text-align: right;
+        }
+
+        .combined-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .combined-table th,
+        .combined-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .combined-table th {
+            background-color: #4f7bbc;
+            color: #fff;
+        }
+
+        .combined-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .combined-table tr:hover {
+            background-color: #e0e0e0;
+        }
+
+        .combined-table td {
+            text-align: center;
+        }
+
+        .combined-table th {
+            text-transform: uppercase;
+        }
+
+        .combined-table td,
+        .combined-table th {
+            padding: 12px 15px;
+        }
+        
         
 
 
     </style>
 </head>
 <body>
+    
     <section>
         <a href="https://postcode-lotterie.de" target="_blank">
             <img src="/dpl_logo.jpg" class="logo" alt="Logo">
         </a>
     </section>
     <div class="tab">
-        <button class="tablinks" onclick="openCity(event, 'TaxCalc')">Tax Calc</button>
-        <button class="tablinks" onclick="openCity(event, 'Winners')">Winners</button>
+        <button class="tablinks" onclick="openTab(event, 'TaxCalc')">Tax Calc</button>
+        <button class="tablinks" onclick="openTab(event, 'Winners')">Winners</button>
+        <button class="tablinks" onclick="openTab(event, 'addWinner')">Add Winner</button>
       </div>
+      <div id="initialText" style="text-align: center; padding: 20px;">
+        <h1 style="font-size: 36px; color: #000000;">Welcome to the Page!</h1>
+        <p style="font-size: 18px; color: #375a94;">Choose between the tabs below to explore.</p>
+    </div>
+    
     
 
-      <div id="TaxCalc" class="tabcontent">
+    <div id="TaxCalc" class="tabcontent">
         <h1>Tax Calculator for Postcode Lottery</h1>
         <label for="MoneyInput">Enter the amount of money that you want to calculate</label>
         <input type="number" id="MoneyInput" name="MonInpt" step="1" pattern="\d+" min="0" required>
@@ -188,18 +280,46 @@
             <label for="Result">Calculated Number with cut-off percentage: </label>
             <input type="text" id="result" name="Result" step="1" pattern="\d+" disabled required>
         </h1>
+        <h1>Calculations history</h1>
     
-<table id="previousCalculationsTable">
-    
-</table>
+        <table id="previousCalculationsTable">
+            
+        </table>
+        
     </div>
+
+
     <div id="Winners" class="tabcontent">
          
-      </div>
-    
-    
+    </div>
+    <div id="addWinner" class="tabcontent">
+        <h1>Add Winner</h1>
+        <button onclick="openAddWinnerPopup()">Enter User Data</button>
+    </div>
+
+    <div id="addWinnerPopup" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closeAddWinnerPopup()">&times;</span>
+            <h2>Add Winner</h2>
+            <label for="ticketNumber">Ticket Number:</label>
+            <input type="number" id="ticketNumber">
+            <label for="city">City:</label>
+            <input type="text" id="city">
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount">
+            <button onclick="addWinner()">Add</button>
+
+        </div>
+    </div>
     
 
     <script src="/main.js"></script>
 </body>
 </html>
+
+
+
+    
+    
+    
+

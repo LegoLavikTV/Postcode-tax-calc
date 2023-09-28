@@ -15,8 +15,8 @@ app.get('/main.js', (req, res) => {
 app.get('/dpl_logo.jpg', (req, res) => {
   res.sendFile(path.join(__dirname, '/dpl_logo.jpg'));
 });
-app.get('/winningData', (req, res) => {
-  res.sendFile(path.join(__dirname, '/data.json')); 
+app.get('/data.json', (req, res) => {
+  res.sendFile(path.join(__dirname, '/data.json'));
 });
 
 const PORT = process.env.PORT || 3000;
